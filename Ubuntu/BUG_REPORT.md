@@ -59,6 +59,9 @@ After:
 
 ---
 
+![Bug 1 Fix](screenshots/fix_bug1.png)
+
+
 ## Bug 2 — MEDIUM: FULL_VERSION returns empty string on Ubuntu 25.04
 
 **File:** Ubuntu/install-eSim.sh, function get_ubuntu_version()
@@ -84,6 +87,9 @@ After:
 FULL_VERSION=$(lsb_release -r | grep -oP '\d+\.\d+')
 
 ---
+
+![Bug 2 Fix](screenshots/fix_bug2.png)
+
 
 ## Bug 3 — CRITICAL: PyQt5 build fails due to missing qmake
 
@@ -142,6 +148,9 @@ pip3 install PyQt5 --no-build-isolation || echo "PyQt5 already installed via apt
 
 ---
 
+![Bug 4 Fix](screenshots/fix_bug4.png)
+
+
 ## Bug 5 — MEDIUM: Invalid apt-get syntax for xz-utils
 
 **File:** Ubuntu/install-eSim-scripts/install-eSim-24.04.sh, line 256
@@ -167,6 +176,9 @@ After:
 sudo apt-get install -y xz-utils
 
 ---
+
+![Bug 5 Fix](screenshots/fix_bug5.png)
+
 
 ## Bug 6 — CRITICAL: KiCad 6.0 PPA has no release file for Ubuntu 25.04
 
@@ -194,6 +206,9 @@ After:
 kicadppa="kicad/kicad-8.0-releases"
 
 ---
+
+![Bug 6 Fix](screenshots/fix_bug6.png)
+
 
 ## Bug 7 — MEDIUM: Stale KiCad PPA persists across failed installer runs
 
@@ -254,6 +269,9 @@ This bug cannot be resolved by end users. It requires the KiCad package maintain
 
 ---
 
+![Bug 8 libgit2 Error](screenshots/bug8_libgit2_error.png)
+
+
 ## Summary Table
 
 Bug 1 | Ubuntu 25.04 not in version case block | Critical | Fixed
@@ -264,3 +282,5 @@ Bug 5 | apt-get missing install -y for xz-utils | Medium | Fixed
 Bug 6 | KiCad 6.0 PPA returns 404 on Ubuntu 25.04 | Critical | Fixed
 Bug 7 | Stale KiCad PPA blocks re-runs | Medium | Fixed
 Bug 8 | libgit2-1.8 absent from Ubuntu 25.04 | Critical | Not fixed — upstream issue
+
+![Version Detection Fixed](screenshots/fix_bug1_bug2_proof.png)
