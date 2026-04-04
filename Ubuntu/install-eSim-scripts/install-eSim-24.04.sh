@@ -163,7 +163,9 @@ function installKicad
         fi
 
     else
-        kicadppa="kicad/kicad-6.0-releases"
+        # Fix: kicad-6.0-releases PPA has no release file for Ubuntu 25.04 (Plucky)
+        # Upgrading to kicad-8.0-releases which supports Plucky
+        kicadppa="kicad/kicad-8.0-releases"
     fi
 
     # Check if the PPA is already added
@@ -246,10 +248,14 @@ function installDependency
     pip3 install matplotlib
 
     echo "Installing PyQt5............."
-    pip3 install PyQt5  
+    # Fix: PyQt5 already installed via apt (python3-pyqt5).
+    # pip3 install PyQt5 builds from source, crashes on low-memory systems
+    # and fails on Ubuntu 25.04 due to missing qmake in virtualenv PATH.
+    # Using system package instead.
+    pip3 install PyQt5 --no-build-isolation || echo "PyQt5 already installed via apt, skipping pip build"
 
     echo "Installing volare"
-    sudo apt-get xz-utils
+    sudo apt-get install -y xz-utils
     pip3 install volare
 }
 
